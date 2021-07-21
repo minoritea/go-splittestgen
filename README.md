@@ -55,6 +55,7 @@ jobs:
       # and install modules before tests.
       - name: Run tests parallelly
         run: |
+          go mod download
           go test ./... -list . | \
           go run github.com/minoritea/go-splittestgen/cmd/go-splittestgen \
             -total ${{ matrix.parallelism }} \
