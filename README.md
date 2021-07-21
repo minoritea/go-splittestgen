@@ -57,7 +57,7 @@ jobs:
       - uses: actions/setup-go@v2
       - uses: actions/checkout@v2
       # Add github.com/minoritea/go-splittestgen to go.mod before CI.
-      - name: Run tests parallelly
+      - name: Run tests in parallel
         run: |
           go mod download
           go test ./... -list . | \
