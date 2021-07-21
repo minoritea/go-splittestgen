@@ -11,7 +11,7 @@ go-splittestgen splits test cases into some subsets and print commands to run on
 generating test commands from the test cases divided by a number,
 and then printing one of the commands by an index number.
 
-if you want to run the generated test commands immediately, just pipe it to a shell.
+if you want to run the generated test commands immediately, just pipe them to a shell.
 
 ```bash
 # print test commands
