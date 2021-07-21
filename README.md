@@ -24,10 +24,10 @@ $ go test ./... -list . | go-splittestgen -total 3 -index 2 | sh
 ### Options
 
 ```
--total uint
-        total number of test processes (default 1)
--index uint
+	-index uint
         index of test processes (default 0, must be less than the total number)
+  -total uint
+        total number of test processes (default 1)
 ```
 
 ## Installation

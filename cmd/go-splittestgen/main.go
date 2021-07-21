@@ -12,8 +12,8 @@ import (
 )
 
 func main() {
-	index := flag.Uint("index", 0, "index of parallel testing")
-	total := flag.Uint("total", 1, "process num of parallel testing")
+	total := flag.Uint("total", 1, "total number of test processes")
+	index := flag.Uint("index", 0, "index of test processes (default 0, must be less than the total number)")
 	flag.Parse()
 
 	input, err := ioutil.ReadAll(os.Stdin)
