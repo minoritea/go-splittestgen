@@ -7,22 +7,27 @@ go-splittestgen splits test cases into some subsets and print commands to run on
 
 ## Usage
 
+`go-splittestgen` is parsing output of `go test -list` from stdin(in the usual case, it is piped),
+generating test commands from the test cases divided by a number,
+and then printing one of the commands by an index number.
+
+if you want to run the generated test commands immediately, just pipe it to a shell.
+
 ```bash
 # print test commands
-$ go test ./... -list . | go-splittestgen
+$ go test ./... -list . | go-splittestgen -total 3 -index 2
 
 # execute tests
-$ go test ./... -list . | go-splittestgen | sh
+$ go test ./... -list . | go-splittestgen -total 3 -index 2 | sh
 ```
-
 
 ### Options
 
 ```
-  -index uint
-        index of parallel testing(default 0)
-  -total uint
-        process num of parallel testing (default 1)
+-total uint
+        total number of test processes (default 1)
+-index uint
+        index of test processes (default 0, must be less than the total number)
 ```
 
 ## Installation
