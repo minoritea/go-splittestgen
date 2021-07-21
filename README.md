@@ -8,8 +8,8 @@ go-splittestgen splits test cases into some subsets and print commands to run on
 ## Usage
 
 `go-splittestgen` is parsing output of `go test -list` from stdin(in the usual case, it is piped),
-generating test commands from the test cases divided by a number,
-and then printing one of the commands by an index number.
+dividing test cases into some groups by a number,
+and then printing a command or commands to execute one of the divided test groups indicated by an index number.
 
 if you want to run the generated test commands immediately, just pipe them to a shell.
 
@@ -24,7 +24,7 @@ $ go test ./... -list . | go-splittestgen -total 3 -index 2 | sh
 ### Options
 
 ```
-	-index uint
+  -index uint
         index of test processes (default 0, must be less than the total number)
   -total uint
         total number of test processes (default 1)
@@ -56,8 +56,7 @@ jobs:
     steps:
       - uses: actions/setup-go@v2
       - uses: actions/checkout@v2
-      # Add github.com/minoritea/go-splittestgen to go.mod
-      # and install modules before tests.
+      # Add github.com/minoritea/go-splittestgen to go.mod before CI.
       - name: Run tests parallelly
         run: |
           go mod download
