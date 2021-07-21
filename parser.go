@@ -55,19 +55,14 @@ type Command struct {
 
 func (t Tests) Commands() []Command {
 	var commands []Command
-	var c Command
+	var l int // length of commands
 	for _, test := range t {
-		if c.Pkg == "" {
-			c.Pkg = test.Pkg
-		} else if test.Pkg != c.Pkg {
-			commands = append(commands, c)
-			c = Command{Pkg: test.Pkg}
+		if l == 0 || commands[l-1].Pkg != test.Pkg {
+			commands = append(commands, Command{Pkg: test.Pkg, Tests: nil})
+			l++
 		}
 
-		c.Tests = append(c.Tests, test.Name)
-	}
-	if c.Pkg != "" {
-		commands = append(commands, c)
+		commands[l-1].Tests = append(commands[l-1].Tests, test.Name)
 	}
 	return commands
 }
